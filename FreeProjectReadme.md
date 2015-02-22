@@ -11,15 +11,13 @@
 
 #### Genetive art  ####
 
-<h6>Generative art refers to any art practice where the artist **uses a system**, such as a set of natural language rules, a computer program, a machine, or other procedural invention, which is set into motion with some degree of autonomy contributing to or resulting in a completed work of art.<h6>
+<h6>Generative art refers to any art practice where the artist uses a system, such as a set of natural language rules, a computer program, a machine, or other procedural invention, which is set into motion with some degree of autonomy contributing to or resulting in a completed work of art.<h6>
 
 - - - -
 
 #### Here are some example of genetive art ####
 
-
-![Smaller icon](
-http://alwayssurfing.com/wp-content/uploads/2013/06/mybg2.jpg "Title here"),
+<a href="" rel="some text"><img src="http://alwayssurfing.com/wp-content/uploads/2013/06/mybg2.jpg" alt="" /></a>
 
 
 ![Smaller icon](
