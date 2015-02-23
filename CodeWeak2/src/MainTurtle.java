@@ -17,8 +17,6 @@ public class MainTurtle extends PApplet{
 	}
 	
 	public void draw () {
-		ellipse (90,90,30,30);
-		
 		for (int i = 0; i < Walkers.length; i++) {
 		      Walkers[i].move();
 		      Walkers[i].display();
