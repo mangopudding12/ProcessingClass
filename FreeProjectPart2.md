@@ -32,7 +32,7 @@
 - - - -
 #### The motion controler
 <h6>
-I have choose the LV_MAXSONAR_EZ1. The reason of that is that you give me that advise to buy this one and I think it is a not very expansive one. <
+I have choose the LV_MAXSONAR_EZ1. The reason of that is that you give me that advise to buy this one and I think it is a not very expansive one. 
 <br>
 
 <a href="" rel="some text"><img src=http://www.thanksbuyer.com/image/cache/data/sku-24929-0-156x122.jpg alt=""  /></a>
