@@ -8,18 +8,13 @@
 <h6> My new idea for the free project is about making a jumping game. It is a very simpel concept. You as player must jump over obstracels that are coming in your way. Is the same concept als the must jumping over obstracles game. Here under you see some exampels of what I want to make.</h6>
 - - - -
 
-
-
 ####Examples of obstracle games:####
 <h6>
 
 <a href="" rel="some text"><img src=http://www.trendalways.com/wp-content/uploads/2015/01/Untitled-14.jpg alt="" /></a>
 
 
-<a href="" rel="some text"><img src=http://a5.mzstatic.com/us/r1000/086/Purple/ec/5d/e1/mzl.mdfydhdp.320x480-75.jpg alt="" /></a>
-
-
- </h6>
+<a href="" rel="some text"><img src=http://a5.mzstatic.com/us/r1000/086/Purple/ec/5d/e1/mzl.mdfydhdp.320x480-75.jpg alt="" /></a> </h6>
 
 - - - -
 
@@ -84,7 +79,7 @@ The second  <a href="https://github.com/jantje/arduino-eclipse-plugin" rel="some
 The 3   <a href="https://github.com/jantje/arduino-eclipse-plugin" rel="some text"> link</a>. This is a tutorial on youtube to set up your arduino in Elipse.<br>
 
 The 4   <a href="http://horrorcoding.altervista.org/arduino-development-with-eclipse-a-step-by-step-tutorial-to-the-basic-setup/" rel="some text"> link</a>. This is a article about setting up your arduino in Eclipse.<br>
-
+</h6>
 
 - - - -
 
