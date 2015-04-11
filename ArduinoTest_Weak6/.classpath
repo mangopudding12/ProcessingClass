@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/dipsausje/Desktop/Documents/Downloads/Download_programmas_files/processing-2.1/modes/java/libraries/serial/library/serial.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dipsausje/Desktop/Documents/Downloads/Download_programmas_files/processing-2.1/core/library/core.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dipsausje/Desktop/Documents/Downloads/Download_programmas_files/processing-2.1/modes/java/libraries/serial/library/jssc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dipsausje/Desktop/Documents/Downloads/Download_programmas_files/Arduino/lib/core.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dipsausje/Desktop/Documents/Downloads/Download_programmas_files/processing-2.1/modes/java/mode/ecj.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dipsausje/Desktop/Documents/Downloads/Download_programmas_files/arduino-eclipse-plugin-master/arduino-eclipse-plugin-master/it.baeyens.arduino.core/lib/jsch-0.1.50.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
