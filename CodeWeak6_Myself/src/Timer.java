@@ -13,6 +13,14 @@ public class Timer {
 	
 	Timer (PApplet kip_, int HowMuchTime)
 	{
+	
+		
+		
+		
+		
+		
+		
+		
 		kip = kip_;
 		
 		// Setting How much Time it have 
