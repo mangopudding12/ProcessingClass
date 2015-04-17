@@ -30,12 +30,15 @@ class walls
          Dead = false;
      }
      
+     float k; 
      
-     void display() 
+     void display(float k_) 
      {
+        k = k_; 
+       
         fill (90); 
         noStroke();
-        rect (xWal,yWal,bWal,hWal);
+        rect (xWal+k,yWal,bWal,hWal);
      }
      
      
