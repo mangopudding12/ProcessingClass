@@ -1,5 +1,8 @@
 import processing.serial.*;
 
+
+// RXTX
+
  Serial myPort;  //the Serial port object
  String val;
 // since we're doing serial handshaking, 
@@ -45,10 +48,15 @@ if (val != null) {
     {                           //if we clicked in the window
       myPort.write('1');        //send a 1
       println("1");
+    } else 
+    {
+        myPort.write('2');
     }
-
     // when you've parsed the data you have, ask for more:
     myPort.write("A");
+    
+    
+    
     }
   }
 }

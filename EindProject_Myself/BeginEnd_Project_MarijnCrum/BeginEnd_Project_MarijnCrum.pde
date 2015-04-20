@@ -7,15 +7,6 @@
 // Ga alles testen Good luck 
 
 
-
-
-
-
-
-
-
-
-
 void setup() 
 {
   // Given the screen bigness numbers

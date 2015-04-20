@@ -3,7 +3,7 @@ int ledPin = 13; // Set the pin to digital 13
  char val2;
 
 
-int POP = 8;
+int POP = 13;
 boolean ledState = LOW; //to toggle our LED
 
 void setup() 
@@ -21,19 +21,19 @@ void loop()
     
     if(val == '1') //if we get a 1
     {
-       ledState = !ledState; //flip the ledState
-       digitalWrite(ledPin, ledState); 
+       //ledState = !ledState; //flip the ledState
+       digitalWrite(ledPin, HIGH); 
     }
     
     //delay(100);
     
-    if (val2 == '3')
+    if (val == '2')
     {
-       digitalWrite(POP, HIGH); 
-    } else {
-      digitalWrite(POP,LOW);
+       digitalWrite(ledPin, LOW); 
+//    } else {
+//      digitalWrite(POP,LOW);
+//    }
     }
-    
     
   } 
     else {
