@@ -1,100 +1,169 @@
 
-// Important comments !!!!!!!!!! 
+// Te do list 
+// Make boxen zodat de player niet uit scherm kan aan de rechterkant. 
 
-// Ga opzoeken hoe ik ook alweer een array maak 
-// Ga opzoeken hoe ik ook alweer tegen die aparte array elementen kan praten. 
-// Ga kijken hoeveel muren ik uberhoud nodig heb 
-// Ga alles testen Good luck 
+// Als je game over bent moeten er nog boxen aan beide kanten komen 
+// zodat je daar niet uit het scherm kan. 
+
+// De snelheid van de muren moet worden bepaald aan hoelang je al speelt. 
+// misschien ook de grote van de muren 
+// OOk hoeveel muren er komen. misschien 3 muren genoeg 
+
+
+
+
+
+// The classes 
+Player MainPlayer;
+Player Enemy; 
+Ground grond;
+Muren[] Objects;  
+reset STARTbutton;
+
+// Variables 
+int HowMuch_Objects; 
+boolean GameOver; 
 
 
 void setup() 
 {
-  // Given the screen bigness numbers
-  xScreen = 1400; 
-  yScreen = 800; 
-  size (xScreen,yScreen); 
+   // size of the screen. 
+   size(1200,600);
+   HowMuch_Objects = 2; 
+   
+   // Making the Player. 
+   MainPlayer = new Player (100,200,50,50);
+   Enemy = new Player (70,100,20,40);
   
-  //----------------------------------------------------------------------------------------------------
-  // Making the StoneWoman player - giving it x _ y _ witch _ height
-  StoneWoman = new Player(xScreen-840,yScreen-350,80,120); 
-  
-  //-----------------------------------------------------------------------------------------------------
-  // Making the walls 
-  HowMuch_walls = 10; 
-  wal = new walls [HowMuch_walls];
-  int k = 0; 
-  
-  // Making the array of walls alive 
-  for (int i = 0; i < HowMuch_walls; i++)
-  {
-     // Hier houden de muren niet de afstand tussen elkaar !!! Ze raken elkaar als ze aan het einde van het scherm zijn. 
-    
-      wal[i] = new walls(1000,yScreen-470,80,240); 
-      k += 900; 
-      println (k);
-      println(i);
-  }
-  
-  //----------------------------------------------------------------------------------------------------- 
-  level = 90;
+   // Making the objects walls and ground plate. 
+   Objects = new Muren[HowMuch_Objects]; 
+   Objects[0] = new Muren(500,350,90,280); // wall  
+   Objects[1] = new Muren (900,350,90,280); // wall
+   
+   grond = new Ground (0,580,1200,20); // ground
+   STARTbutton = new reset (); // Start again button when you losed the game.
+   
+   
+   GameOver = false; 
 }
-
 
 
 void draw() 
 {
-  background(255);
   
-  //-----------------------------------------------------------------------------------------------------------
-  // This is the player. 
-  StoneWoman.display(); 
-  
-  //-----------------------------------------------------------------------------------------------------------
-  int kk =0; // Testen of ik iets kan met de afstand tussen de muren. Hoe minder afstand hoe moeilijker het is. 
-  
-  for (int i= 0; i< HowMuch_walls; i++)
-  {      
-     // Het interessante hiervan is dat alle muren deze afstand van elkaar houden. 
-      wal[i].display(kk);
-      kk +=100;
-      wal[i].move(); 
-  }
-  
-  
-    
-    
-  if (wal[1].Dead == true)
+  if (GameOver == false)
   {
-     println("wal1");
-     println(wal[1].xWal);
-  }
+        
+       // The background per frame opnieuw getekend. 
+       background(255); 
+       
+       // Making the gravity alive so that you can jump
+       PVector gravity = new PVector(0,0.15); 
+       MainPlayer.applyForce(gravity);   
+              
+       MainPlayer.PossibleJump();
+       MainPlayer.jump(); // Het werkt als het hier staat.      
+       MainPlayer.move();  
+       MainPlayer.display();     
+ 
+       
+// --------------------------------------------- For loop part ---------------------------
+       // Drawing the walls    
+       for (int p = 0; p < HowMuch_Objects; p++)
+       {
+         
+           // Grond collsion 
+           if (MainPlayer.Location.x < grond.xground + grond.breedte && MainPlayer.Location.x + MainPlayer.breedte > grond.xground + 2 && MainPlayer.Location.y + MainPlayer.hoogte > grond.yground - MainPlayer.jumpVelocity.y)
+           { 
+                MainPlayer.Location.y = (grond.yground-MainPlayer.jumpVelocity.y) - MainPlayer.hoogte;
+                MainPlayer.ground2 = true;
+                println("grondbovenop");
+                println( MainPlayer.ground2);
+           }
+           
+           // Collision detection between objects and player. 
+           // Deze collision detects de bovenkant wall. 
+           if (MainPlayer.Location.x < Objects[p].xmuur + (Objects[p].breedte - MainPlayer.topSpeed)  && MainPlayer.Location.x + MainPlayer.breedte > (Objects[p].xmuur + (MainPlayer.topSpeed+1)) && MainPlayer.Location.y + MainPlayer.hoogte > Objects[p].ymuur - MainPlayer.jumpVelocity.y)
+           { 
+                       MainPlayer.Location.y = (Objects[p].ymuur-MainPlayer.jumpVelocity.y) - MainPlayer.hoogte;
+                       println("Bovenop");
+                       MainPlayer.ground = true;
+                       println(MainPlayer.ground);
+           } 
+           
+               // Linkerkant wall 
+               else if (MainPlayer.Location.x + MainPlayer.breedte > Objects[p].xmuur && MainPlayer.Location.y + MainPlayer.hoogte > Objects[p].ymuur - MainPlayer.jumpVelocity.y && MainPlayer.Location.x < Objects[p].xmuur)
+               {
+                    MainPlayer.Location.x = Objects[p].xmuur - MainPlayer.breedte; 
+                    println("Linkerkant");
+                    MainPlayer.ground = false;
+               }
+               
+               // Rechterkant wall
+               else if (MainPlayer.Location.y + MainPlayer.hoogte > Objects[p].ymuur - MainPlayer.jumpVelocity.y && MainPlayer.Location.x < Objects[p].xmuur + Objects[p].breedte && MainPlayer.Location.x > Objects[p].xmuur)
+               { 
+                    MainPlayer.Location.x = Objects[p].xmuur + Objects[p].breedte;
+                    println("Rechterkant");
+                    MainPlayer.ground = false;
+               }            
+
+           // This function look at the player when it move out the screen. 
+           // Then you are game over. 
+           if (MainPlayer.Location.x + MainPlayer.breedte < 0)
+           {
+               println("game over");
+               
+               // This set the player again in de middle of the screen. 
+               MainPlayer.Location.x = 600; 
+               MainPlayer.Location.y = 200; 
+ 
+               GameOver = true; 
+           }
+           
+           // Making the walls and the ground.
+              Objects[p].outScreen();
+              Objects[p].move();
+              noStroke();  
+              Objects[p].display(90,200,250);                 
+        } // end forloop
   
-  if (wal[2].Dead == true)
-  {
-     println("wal2");
-     println (wal[2].xWal);
-  }
+        grond.display(250,120,10);
+        
+        
+  } else { // GameOver == true
   
-//  
-//  // Here the walls out side the screen must killed.................
-//  if (wal.Dead == true)
-//  {
-//     println("Dead is treu");
-//     
-//     // Bring the wall back to 1450... recycling of the walls. 
-//     wal.xWal = 1450;
-//     
-//     // This change the wall. 
-//     float Randomness_Newlocation = random (0,150); 
-//     
-//     // Changing the y position of de wall and the high of the wall. SO that is stay on the some y postion as the player. 
-//     wal.yWal = (yScreen - 470) + Randomness_Newlocation;
-//     wal.hWal = 240 - Randomness_Newlocation;
-//     
-//     // De witch of the Wall makes it harder to jump over it. --- Levels how higher de level how the witch grow biger !!! 
-//     wal.bWal = (80 + Randomness_Newlocation)-  level; 
-//     
-//     // Zet the boolean again on false so that the walls can move again. Looping !!
-//     wal.Dead = false;
-//  }     
-}
+       // Making the gravity alive so that you can jump
+       PVector gravity = new PVector(0,0.15); 
+       MainPlayer.applyForce(gravity);   
+              
+       MainPlayer.PossibleJump();
+       MainPlayer.jump();     
+       MainPlayer.move();  
+       MainPlayer.display(); 
+
+       STARTbutton.Touch();
+       STARTbutton.display(850,470,53,120);        
+       rect (750,470,53,120);
+       rect (750,470,130,60);
+       fill (255,0,0);
+       triangle(750, 470, 825, 350, 901, 470);
+       
+ 
+       grond.display(250,120,10);
+               
+       // Grond collsion 
+       if (MainPlayer.Location.x < grond.xground + grond.breedte && MainPlayer.Location.x + MainPlayer.breedte > grond.xground + 2 && MainPlayer.Location.y + MainPlayer.hoogte > grond.yground - MainPlayer.jumpVelocity.y)
+           { 
+                MainPlayer.Location.y = (grond.yground-MainPlayer.jumpVelocity.y) - MainPlayer.hoogte;
+                MainPlayer.ground2 = true;
+                println("grondbovenop");
+                println( MainPlayer.ground2);
+           }
+                                          
+        // Makes the background white __ That is the game over look. 
+        fill (255,255,255,140);
+        rect (0,0,width,height); 
+  }  
+}  
+
+
