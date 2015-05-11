@@ -83,7 +83,7 @@ void draw()
            
            // Collision detection between objects and player. 
            // Deze collision detects de bovenkant wall. 
-           if (MainPlayer.Location.x < Objects[p].xmuur + (Objects[p].breedte - MainPlayer.topSpeed)  && MainPlayer.Location.x + MainPlayer.breedte > (Objects[p].xmuur + (MainPlayer.topSpeed+1)) && MainPlayer.Location.y + MainPlayer.hoogte > Objects[p].ymuur - MainPlayer.jumpVelocity.y)
+           if (MainPlayer.Location.x < Objects[p].xmuur + (Objects[p].breedte - MainPlayer.topSpeed)  && MainPlayer.Location.x + MainPlayer.breedte > (Objects[p].xmuur + (MainPlayer.topSpeed+10)) && MainPlayer.Location.y + MainPlayer.hoogte > Objects[p].ymuur - MainPlayer.jumpVelocity.y)
            { 
                        MainPlayer.Location.y = (Objects[p].ymuur-MainPlayer.jumpVelocity.y) - MainPlayer.hoogte;
                        println("Bovenop");
@@ -163,7 +163,8 @@ void draw()
         // Makes the background white __ That is the game over look. 
         fill (255,255,255,140);
         rect (0,0,width,height); 
-  }  
+        
+  } // end game over   
 }  
 
 
