@@ -8,7 +8,8 @@ class Muren
     
     float kleur1; 
     float kleur2;
-    float kleur3; 
+    float kleur3;
+    float SXMuren;  
            
   
     // Contructor 
@@ -18,6 +19,7 @@ class Muren
          ymuur = ymuur_;
          hoogte = hoogte_;
          breedte = breedte_;
+         SXMuren = 3; 
     }
   
   
@@ -33,7 +35,7 @@ class Muren
    
    void move () 
    {
-      xmuur -=3;  
+      xmuur -= SXMuren;  
    }
   
    // When wall is out of screen set it to the width 1200 again. 

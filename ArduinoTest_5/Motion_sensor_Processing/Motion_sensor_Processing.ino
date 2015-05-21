@@ -20,21 +20,19 @@ void loop ()
     if (val == HIGH)
     {
        digitalWrite(ledPin,HIGH); // Turn led on 
-       delay (150);
        
        if (MotionSensor == LOW)
        {
-           Serial.println("Motion Detection");
+           //Serial.println("Motion Detection");
            hoi = String("S"); 
            Serial.println(hoi); 
            MotionSensor = HIGH; 
        }
     } else { 
         digitalWrite (ledPin,LOW);  
-        delay(300); 
         if (MotionSensor == HIGH)
         {
-            Serial.println ("Motion end");
+           // Serial.println ("Motion end");
             hoi = String("D"); 
             Serial.println(hoi);
             MotionSensor = LOW; 

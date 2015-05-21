@@ -32,6 +32,10 @@ class Player
     PVector jumpVelocity;
     boolean Trying; 
     int pop; 
+    
+    // speed Wall math 
+    float SpeedSpeed; 
+    int onetime;  
   
     
     
@@ -81,9 +85,15 @@ class Player
       rect(Location.x,Location.y,breedte,hoogte); 
    }
 
-  
+   
 
-
+  void PossibleMove()
+  {
+      if (Location.x + breedte > width)
+      {
+          Location.x = width - breedte; 
+      }
+  }
 
 
   
@@ -136,6 +146,7 @@ class Player
          jumpacceleration.mult(0);
   }
   
+  
   void PossibleJump()
   {  
          // ground = wall collosion 
@@ -145,36 +156,38 @@ class Player
               {
                   if (key == 'k' || key == 'K')
                   {
-                       jumpVelocity.y *= -1;
-                       jumpVelocity.limit (jumpVelocitymax);
-                       MainPlayer.ground = false;    
+                      SpeedSpeed ++; // This is the speed of walls  
+                      println(SpeedSpeed);
+                                      
+                      jumpVelocity.y *= -1;
+                      jumpVelocity.limit (jumpVelocitymax);
+                      MainPlayer.ground = false;  
+                      actiefjump = false; // reset actiefjump to false else it will go wrong 
                   }
               }               
-         } else {
-            println("key = false");
-            println(MainPlayer.ground);
-         }
+         } 
         
         // ground2 = ground collosion 
         if (ground2 == true) 
          {   
-              if (keyPressed) 
-              {
-                  if (key == 'k' || key == 'K')
+             // if (keyPressed) 
+             // {
+                  if (actiefjump == true)
                   {
-                       jumpVelocity.y *= -1;
-                       jumpVelocity.limit (jumpVelocitymax);
-                       MainPlayer.ground2 = false;
-                  }
-              }               
-         }  else {
-            println("key = false");
-            println(MainPlayer.ground2);
-         }
-         
+                           SpeedSpeed ++; // This is the speed of walls 
+                           println(SpeedSpeed);
+                           
+                           jumpVelocity.y *= -1;
+                           jumpVelocity.limit (jumpVelocitymax);
+                           MainPlayer.ground = false; 
+                           actiefjump = false;  // reset actiefjump to false else it will go wrong 
+                  } // end k pressed 
+             // }    // end keypressed           
+         }        
        
          
          
+ 
   } // EndPossibleJump___ if statement 
   
   
