@@ -27,7 +27,8 @@ boolean GameOver;
 float RandomYmuur; 
 
 // Timer 
-// When 5 seconds have past it is possible to jump again with motion sensor 
-int savedTime;
-int totalTime = 10000; // 5000 miliseconds = 5 seconds 
+Timer TTimer; 
+
+// Font 
+PFont Tfont;
 

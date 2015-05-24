@@ -157,21 +157,20 @@ class Player
                   if (key == 'k' || key == 'K')
                   {
                       SpeedSpeed ++; // This is the speed of walls  
-                      println(SpeedSpeed);
+                      // println(SpeedSpeed);
                                       
                       jumpVelocity.y *= -1;
                       jumpVelocity.limit (jumpVelocitymax);
                       MainPlayer.ground = false;  
+                      
                       actiefjump = false; // reset actiefjump to false else it will go wrong 
                   }
               }               
-         } 
+         } // end wall collision if statement
         
         // ground2 = ground collosion 
         if (ground2 == true) 
          {   
-             // if (keyPressed) 
-             // {
                   if (actiefjump == true)
                   {
                            SpeedSpeed ++; // This is the speed of walls 
@@ -179,10 +178,9 @@ class Player
                            
                            jumpVelocity.y *= -1;
                            jumpVelocity.limit (jumpVelocitymax);
-                           MainPlayer.ground = false; 
+                           MainPlayer.ground2 = false; 
                            actiefjump = false;  // reset actiefjump to false else it will go wrong 
-                  } // end k pressed 
-             // }    // end keypressed           
+                  }          
          }        
        
          
