@@ -5,32 +5,7 @@ void draw()
     // Reading data form arduino 
     if(portStream != null) 
     {
-                if(portStream.charAt(0) == 'S' ) // When getting S you are posible to jump
-                {
-                     if (onetimee == 0)
-                     {
-                          TTimer.reachedTime = false; 
-                          actiefjump = true;
-                          onetimee = 1; 
-                     } 
-                } else {     
-                     if (onetimee == 1)
-                     {
-                          onetimee = 0; 
-                          println("Reset Timer");
-                          TTimer.tijdStart(); // reset Timer 
-                     }
-                     
-                          println("Tikking Timer");
-                          TTimer.Tikking();
-                          
-                          if (TTimer.reachedTime == true)
-                          {
-                            textFont(Tfont, 32);
-                            fill(0);
-                            text("You can jump", 10, 50);
-                          }
-                }  
+               ardruino ();  
 
                         
   if (GameOver == false)
@@ -60,8 +35,6 @@ void draw()
            { 
                 MainPlayer.Location.y = (grond.yground-MainPlayer.jumpVelocity.y) - MainPlayer.hoogte;
                 MainPlayer.ground2 = true;
-                //println("grondbovenop");
-                //println( MainPlayer.ground2);
            }
            
            // Collision detection between objects and player. 
@@ -69,9 +42,7 @@ void draw()
            if (MainPlayer.Location.x < Objects[p].xmuur + (Objects[p].breedte - MainPlayer.topSpeed)  && MainPlayer.Location.x + MainPlayer.breedte > (Objects[p].xmuur + (MainPlayer.topSpeed+10)) && MainPlayer.Location.y + MainPlayer.hoogte > Objects[p].ymuur - MainPlayer.jumpVelocity.y)
            { 
                        MainPlayer.Location.y = (Objects[p].ymuur-MainPlayer.jumpVelocity.y) - MainPlayer.hoogte;
-                       //println("Bovenop");
                        MainPlayer.ground = true;
-                       //println(MainPlayer.ground);
            } 
            
                // Linkerkant wall 

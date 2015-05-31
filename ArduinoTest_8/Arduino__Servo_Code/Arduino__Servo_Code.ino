@@ -1,13 +1,5 @@
 #include <Servo.h> 
 
-
-int ledPin = 4; // ledlight 
-int inputPin = 7; // PIR sensor 
-int MotionSensor = LOW; // We start, no motion detection. 
-int val = 0; 
-
-String motions; 
-
 // Servo aanmaken
 Servo lolly; 
 
@@ -28,23 +20,11 @@ int STOP = 1;
 int pos = 90;
 
 
-
-
-
-
-
-
-
 void setup () 
 {
-   pinMode (ledPin,OUTPUT); 
-   pinMode (inputPin,INPUT); 
-  
-   Serial.begin(9600); 
-   
-   
      // Servo zit aan pin 9 
      lolly.attach(9); 
+     Serial.begin (9600); 
      
      // Led lichtjes 
      pinMode (red,OUTPUT); 
@@ -57,41 +37,15 @@ void setup ()
      delay (1000);
 }
 
+
 void loop () 
 {
-    val = digitalRead (inputPin); // Read input 
-    
-    if (val == HIGH)
-    {
-       digitalWrite(ledPin,HIGH); // Turn led on 
-       
-       if (MotionSensor == LOW)
-       {
-           //Serial.println("Motion Detection");
-           motions = String("S"); 
-           Serial.println(motions); 
-           MotionSensor = HIGH; 
-       }
-    } else { 
-        digitalWrite (ledPin,LOW);  
-        if (MotionSensor == HIGH)
-        {
-           // Serial.println ("Motion end");
-            motions = String("D"); 
-            Serial.println(motions);
-            MotionSensor = LOW; 
-        }
-    }
-    
-// ------------------- Servo sensor part ------------------- 
-
-
-    
-    // ------------------------ STOP == 1 ----------------------------  
+  
+// ------------------------ STOP == 1 ----------------------------  
   if (STOP == 1 || STOP == '1')
   {
     // Data sending     
-    //Serial.write ("STOP = 0"); 
+    Serial.write ("STOP = 0"); 
     
     // Led lichtjes 
     digitalWrite (red, LOW);
@@ -121,7 +75,7 @@ void loop ()
   if (STOP == 2 || STOP == '2')
   {
       // Data sending 
-      //Serial.write ("STOP = 2"); 
+      Serial.write ("STOP = 2"); 
       
       // Led lichtjes 
       digitalWrite (green,LOW);
@@ -135,7 +89,7 @@ void loop ()
       for (pos = 0; pos <= 90; pos++)
       {  
             lolly.write (pos);
-            delay (10); 
+            delay (15); 
             
             // Wanneer servo 180 is ga naar stop 2 (stil zetten). 
             if (pos == 90)
@@ -152,7 +106,7 @@ void loop ()
   if (STOP == 3)
   {
       // Sending Data
-      //Serial.write ("STOP = 3"); 
+      Serial.write ("STOP = 3"); 
       
       // Led lichtjes
       digitalWrite (blauw,HIGH);
@@ -176,7 +130,7 @@ void loop ()
   if (STOP == 4)
   {
       // Sending Data 
-      //Serial.write ("STOP = 4"); 
+      Serial.write ("STOP = 4"); 
     
       // Led lichtjes
       digitalWrite (geel,HIGH);
@@ -196,14 +150,6 @@ void loop ()
       }
   }
   
-    
-    
-    
-    
-    
-    
-    
-    
+// --------------------------------------------------------------
+  
 }
-
-

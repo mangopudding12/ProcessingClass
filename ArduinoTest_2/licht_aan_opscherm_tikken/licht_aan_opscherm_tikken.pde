@@ -12,13 +12,13 @@ void setup()
 void draw() {
   println(Serial.list());
   
-  if (mousePressed == true) 
-  {                           //if we clicked in the window
-   myPort.write('3');         //send a 1
-   println("3");   
-  } else 
-  {                           //otherwise
-  myPort.write('0');          //send a 0
-  println("0");
-  }   
+
+  
+    
+}
+
+void mousePressed () 
+{
+    myPort.write('2');         //send a 1
+   println("2"); 
 }

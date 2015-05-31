@@ -32,8 +32,11 @@ void setup()
    
    
    // Timer 
-   TTimer = new Timer(2000); // 1 minuut 
+   TTimer = new Timer(2000); // 2 muniuten  
    
    // Font 
    Tfont = loadFont("Balloons-48.vlw");
+   
+   // Servo 
+   tellen = 0; 
 }

@@ -11,6 +11,8 @@
    { // If data is available to read,
      val = Serial.read(); // read it and store it in val
    }
+   
+   
    if (val ==  '3'){ 
      // If 1 was received
      digitalWrite(ledPin, HIGH); // turn the LED on

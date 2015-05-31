@@ -32,3 +32,6 @@ Timer TTimer;
 // Font 
 PFont Tfont;
 
+// servo 
+int tellen; 
+

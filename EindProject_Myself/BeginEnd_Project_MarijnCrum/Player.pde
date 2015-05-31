@@ -171,6 +171,9 @@ class Player
         // ground2 = ground collosion 
         if (ground2 == true) 
          {   
+              //if (key == 'k' || key == 'K')
+              //{
+
                   if (actiefjump == true)
                   {
                            SpeedSpeed ++; // This is the speed of walls 
@@ -180,7 +183,8 @@ class Player
                            jumpVelocity.limit (jumpVelocitymax);
                            MainPlayer.ground2 = false; 
                            actiefjump = false;  // reset actiefjump to false else it will go wrong 
-                  }          
+                  } 
+             // }         
          }        
        
          
