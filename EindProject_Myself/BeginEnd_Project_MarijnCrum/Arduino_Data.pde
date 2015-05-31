@@ -18,7 +18,7 @@ void ardruino ()
                           actiefjump = true;
                           
                           // Servo gaat dicht
-                          if (tellen == 1)
+                          if (tellen == 1) 
                           { 
                               myWhale.write ('1');
                               tellen = 0;
