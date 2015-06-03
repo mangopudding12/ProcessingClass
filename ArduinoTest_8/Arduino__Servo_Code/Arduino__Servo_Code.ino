@@ -89,7 +89,7 @@ void loop ()
       for (pos = 0; pos <= 90; pos++)
       {  
             lolly.write (pos);
-            delay (15); 
+            delay (10); 
             
             // Wanneer servo 180 is ga naar stop 2 (stil zetten). 
             if (pos == 90)
